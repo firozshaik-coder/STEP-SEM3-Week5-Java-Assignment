@@ -2,15 +2,16 @@ import java.util.Arrays;
 
 public class Problem1 {
 
-    static void applyMultipliers(double[] playerScores, int captainIndex, int viceCaptainIndex) {
-        playerScores[captainIndex] = playerScores[captainIndex] * 2.0;
-        playerScores[viceCaptainIndex] = playerScores[viceCaptainIndex] * 1.5;
+    static void curveScores(int[] scores, int bonus) {
+        for (int i = 0; i < scores.length; i++) {
+            scores[i] = scores[i] + bonus;
+        }
     }
 
     public static void main(String[] args) {
-        double[] scores = {40, 55, 30, 62};
+        int[] scores = {70, 85, 60};
 
-        applyMultipliers(scores, 1, 3);
+        curveScores(scores, 10);
 
         System.out.println(Arrays.toString(scores));
     }

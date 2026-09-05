@@ -3,26 +3,26 @@ public class Problem4 {
     private static double rowAverage(int[] row) {
         int sum = 0;
 
-        for (int runs : row) {
-            sum += runs;
+        for (int score : row) {
+            sum += score;
         }
 
         return (double) sum / row.length;
     }
 
-    static String classifyMatches(int[][] runsPerOver, int threshold) {
+    static String classifyRows(int[][] seatingScores, int threshold) {
         StringBuilder result = new StringBuilder();
 
-        for (int i = 0; i < runsPerOver.length; i++) {
-            double average = rowAverage(runsPerOver[i]);
+        for (int i = 0; i < seatingScores.length; i++) {
+            double average = rowAverage(seatingScores[i]);
 
-            if (average >= threshold) {
-                result.append("Match ").append(i).append(": Power Surge");
+            if (average < threshold) {
+                result.append("Row ").append(i).append(": Quiet Zone");
             } else {
-                result.append("Match ").append(i).append(": Normal");
+                result.append("Row ").append(i).append(": Buzzing Zone");
             }
 
-            if (i < runsPerOver.length - 1) {
+            if (i < seatingScores.length - 1) {
                 result.append(" | ");
             }
         }
@@ -31,14 +31,14 @@ public class Problem4 {
     }
 
     public static void main(String[] args) {
-        int[][] runsPerOver = {
-            {4, 6, 8},
-            {10, 12, 14},
-            {2, 3, 1}
+        int[][] seatingScores = {
+            {40, 50, 45},
+            {85, 90, 95},
+            {30, 20, 25}
         };
 
-        int threshold = 8;
+        int threshold = 60;
 
-        System.out.println(classifyMatches(runsPerOver, threshold));
+        System.out.println(classifyRows(seatingScores, threshold));
     }
 }
